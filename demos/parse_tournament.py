@@ -71,6 +71,6 @@ if __name__ == '__main__':
     # Example usage: python parse_tournament.py --league-id 15739 --min-start-time 2023-09-22T07:00:00.000Z
     parser = argparse.ArgumentParser(description='Download and parse tournament demos')
     parser.add_argument('--league-id', help='OpenDota League ID to query for matches', required=True)
-    parser.add_argument('--min-start-time', help='Minimum start time for matches()', required=True)
+    parser.add_argument('--min-start-time', help='Minimum start time for matches', required=True)
     args = parser.parse_args()
     main(args.league_id, args.min_start_time)
