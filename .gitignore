@@ -4,9 +4,9 @@ dependency-reduced-pom.xml
 .classpath
 .project
 *.log
-*.dem
 *.bz2
-*.json
+/demos/raw/*
+/demos/parsed/*
 /.idea/
 /.factorypath
 /stats.iml
