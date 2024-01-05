@@ -58,9 +58,9 @@ def main(league_id, min_start_time):
         os.mkdir('parsed')
 
     for match_id in match_url_dict.keys():
-        if not os.path.exists(f'parsed/{match_id}.json'):
+        if not os.path.exists(f'parsed/{match_id}.txt'):
             print(f'Parsing {match_id}')
-            subprocess.call(f'curl localhost:5600 --data-binary "@raw/{match_id}.dem" > parsed/{match_id}.json', shell=True)
+            subprocess.call(f'curl localhost:5600 --data-binary "@raw/{match_id}.dem" > parsed/{match_id}.txt', shell=True)
         else:
             print(f'Skipping {match_id}')
 
