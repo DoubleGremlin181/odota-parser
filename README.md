@@ -9,4 +9,4 @@ Quickstart
 ``` docker run -d -p 5600:5600 --name odota-parser-container odota-parser```
 * Run the parser  
 ``` cd demos/```  
-```python parse_tournament.py --league-id 15728 --min-start-time 2023-01-01T07:00:00.000Z``` [Grab league-id from [OpenDota Explorer](https://www.opendota.com/explorer)]
+``` python parse_tournament.py --league-id 15728 --min-start-time 2023-01-01T07:00:00.000Z``` [Grab league-id from [OpenDota Explorer](https://www.opendota.com/explorer)]
