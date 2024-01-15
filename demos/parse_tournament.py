@@ -1,7 +1,9 @@
 import argparse
+import json
 import os
 import requests
 import subprocess
+from simplifier import simplifier
 
 
 def main(league_id, min_start_time):
@@ -55,7 +57,22 @@ def main(league_id, min_start_time):
     for match_id in match_url_dict.keys():
         if not os.path.exists(f'{league_id}/parsed/{match_id}.json'):
             print(f'Parsing {match_id}')
-            subprocess.call(f'curl localhost:5600 --data-binary "@raw/{match_id}.dem" > {league_id}/parsed/{match_id}.json', shell=True)
+            subprocess.call(f'curl localhost:5600 --data-binary "@{league_id}/raw/{match_id}.dem" > {league_id}/parsed/{match_id}.json', shell=True)
+        else:
+            print(f'Skipping {match_id}')
+
+    # Simplify demos
+    print(f'Simplifying {len(match_url_dict)} demos')
+    if not os.path.exists(f'{league_id}/simplified'):
+        os.mkdir(f'{league_id}/simplified')
+
+    for match_id in match_url_dict.keys():
+        # if match_id in [7378693331, 7378751246, 7378785114]:
+        #     continue
+        if not os.path.exists(f'{league_id}/simplified/{match_id}.json') or os.path.getsize(f'{league_id}/simplified/{match_id}.json') == 0:
+            print(f'Simplifying {match_id}')
+            with open(f'{league_id}/simplified/{match_id}.json', 'w') as f:
+                json.dump(simplifier(league_id, match_id), f)
         else:
             print(f'Skipping {match_id}')
 

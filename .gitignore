@@ -5,10 +5,9 @@ dependency-reduced-pom.xml
 .project
 *.log
 *.bz2
-/demos/raw/*
-/demos/parsed/*
 demos/*/raw/*
 demos/*/parsed/*
+demos/*/simplified/*
 /.idea/
 /.factorypath
 /stats.iml

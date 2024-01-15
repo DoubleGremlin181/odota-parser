@@ -1,10 +1,12 @@
-# parser
-Replay parse server generating logs from replay files
+# Parser
+Dota 2 replay parser expanding on [odota/parser](https://github.com/odota/parser) to create simplified textual representations of Dota 2 matches.
 
 Quickstart
 ----
-* Run the Java project (it'll start a webserver on port 5600)
-* Or build manually with `mvn install`
-* Run manually with `java -jar target/stats-0.1.0.jar`
-* POST a .dem replay file to the server (example: scripts/test.sh)
-* The parser returns line-delimited JSON in the HTTP response
+* Build the docker image  
+``` docker build . --tag 'odota-parser'```
+* Run the docker image  
+``` docker run -d -p 5600:5600 --name odota-parser-container odota-parser```
+* Run the parser  
+``` cd demos/```  
+```python parse_tournament.py --league-id 15728 --min-start-time 2023-01-01T07:00:00.000Z``` [Grab league-id from [OpenDota Explorer](https://www.opendota.com/explorer)]
